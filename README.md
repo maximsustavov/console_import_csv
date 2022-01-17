@@ -1,5 +1,6 @@
 # console_import_csv
-Импорт данных из csv файла в бд
+Импорт данных через консольную команду
+из csv файла в бд
 <h1>Установка</h1>
 
 1. git clone https://github.com/maximsustavov/console_import_csv.git
