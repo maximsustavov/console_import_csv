@@ -3,7 +3,7 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use App\Http\Controllers\import_csv_controller;
+use App\Http\Controllers\ImportCsvController;
 
 class import_command extends Command
 {
@@ -28,10 +28,10 @@ class import_command extends Command
      */
     public function handle()
     {
-        $import_csv = new import_csv_controller();
+        $import_csv = new ImportCsvController();
         $result = $import_csv->index();
-        if(!empty($result)){
-            $this->table(['Id','Name','Email','Age','Location','Error'],$result);
+        if (!empty($result)) {
+            $this->table(['Id', 'Name', 'Email', 'Age', 'Location', 'Error'], $result);
         } else {
             $this->info('Success');
         }
