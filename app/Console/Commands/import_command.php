@@ -24,16 +24,18 @@ class import_command extends Command
     /**
      * Execute the console command.
      *
+     * @var    array|string $result
      * @return string
      */
     public function handle()
     {
         $import_csv = new ImportCsvController();
         $result = $import_csv->index();
-        if (!empty($result)) {
+
+        if (is_array($result)) {
             $this->table(['Id', 'Name', 'Email', 'Age', 'Location', 'Error'], $result);
         } else {
-            $this->info('Success');
+            $this->info($result ?? 'Success');
         }
     }
 }

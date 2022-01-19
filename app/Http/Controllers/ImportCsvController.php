@@ -24,7 +24,7 @@ class ImportCsvController extends Controller
     /**
      * Validation csv file and insert database.
      *
-     * @return array if are have error element.
+     * @return array|string if are have error element.
      */
     public function index()
     {
@@ -38,6 +38,10 @@ class ImportCsvController extends Controller
         ];
 
         $users = $this->csvToArray();
+
+        if (!$users) {
+            return 'Error reading file!';
+        }
 
         foreach ($users as $key => $user) {
             $validator = validator::make($user, $rules);
